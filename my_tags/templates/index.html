@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Learning Django templates{% endblock title %}
+
+{% block content %}
+    <h2>{{ x }}</h2>
+
+    {# Example Django template tags #}
+     
+    {% comment %} {% if user.is_authenticated %}
+        Welcome, {{ user.username }}!
+    {% else %}
+        Please log in to access.
+    {% endif %} {% endcomment %}
+    
+
+    <ul class="list-disc pl-5">
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <img src="{%  static 'images/my_image.jpg' %}" width="400" height="400" alt="image">
+{% endblock content %}

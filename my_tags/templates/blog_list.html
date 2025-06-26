@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Blog List with Editors{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-6 text-center text-indigo-600">Blog Posts and Editors</h1>
+
+    {% for blog in blogs %}
+        <div class="bg-white shadow rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-2">{{ blog.title }}</h2>
+            <p class="text-sm text-gray-600 mb-1"><strong>Author:</strong> {{ blog.author.username }}</p>
+            <p class="text-sm text-gray-500 mb-4"><strong>Published:</strong> {{ blog.published_date|date:"F j, Y" }}</p>
+
+            <div class="prose prose-indigo max-w-none mb-4">
+                {{ blog.rendered_text|safe }}
+            </div>
+
+            <div>
+                <h3 class="text-md font-medium text-gray-800">Editors:</h3>
+                {% if blog.editors.all %}
+                    <ul class="list-disc list-inside text-gray-700">
+                        {% for editor in blog.editors.all %}
+                            <li>{{ editor.first_name }} {{ editor.last_name }} ({{ editor.email }})</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-gray-500">No editors assigned to this blog.</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

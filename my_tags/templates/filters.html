@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Filters{% endblock title %}
+{% block content %}
+<h2>{{ my_string | upper }}</h2>
+
+<h2>Date</h2>
+<p>Date: {{ my_date | date:"F j, Y"}}</p>
+<h2>Truncate Characters</h2>
+<p>Truncted: {{ long_string |truncatechars:14}}</p>
+
+{% endblock content %}

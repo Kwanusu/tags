@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}This is a title{% endblock title %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    {% include "navbar.html" %}
+
+    <main class="container mx-auto p-4">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    {% include "footer.html" %}
+
+</body>
+</html>
